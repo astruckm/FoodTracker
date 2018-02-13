@@ -21,6 +21,9 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     //This value is either passed by MealTableViewController in prepare(for:sender:) or constructed as part of adding a new meal.
     var meal: Meal?
     
+    //Track whether user has not yet edited the recipe text
+    var userHasNotEditedRecipe = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +47,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         } else {
             recipeTextView.textColor = UIColor.black
             recipeTextView.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.light)
+            userHasNotEditedRecipe = false
         }
         
         // Enable the save button only if the text field has a valid Meal name.
@@ -120,8 +124,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         if segue.identifier == "Recipe" {
             let recipeViewController = segue.destination as! RecipeViewController
-            recipeViewController.recipe = recipeTextView.text
-            recipeViewController.delegate = self
+            recipeViewController.recipe = userHasNotEditedRecipe ? "" : recipeTextView.text
+            recipeViewController.recipeDelegate = self
         }
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIBarButtonItem, button == saveButton else { os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
@@ -152,6 +156,25 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func tapCamera(_ sender: UIButton) {
+        //Hide the keyboard.
+        nameTextField.resignFirstResponder()
+        recipeTextView.resignFirstResponder()
+
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            //UIImagePickerController is a view controller that lets a user take a photo.
+            let imagePickerController = UIImagePickerController()
+            
+            //Enable photos to be taken.
+            imagePickerController.sourceType = .camera
+            
+            //Make sure the ViewController is notified when the user takes a photo.
+            imagePickerController.delegate = self
+            imagePickerController.allowsEditing = false
+            self.present(imagePickerController, animated: true, completion: nil)
+        } else {  os_log("Camera source type not available", log: OSLog.default, type: .debug)
+        }
+    }
     
     //MARK: Private Methods
     private func updateSaveButtonState() {

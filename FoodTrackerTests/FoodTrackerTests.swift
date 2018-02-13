@@ -9,7 +9,7 @@
 import XCTest
 @testable import FoodTracker
 
-class FoodTrackerTests: XCTestCase {
+@objcMembers class FoodTrackerTests: XCTestCase {
     
     //MARK: Meal Class Tests
     //Confirm that the Meal initializer returns a Meal object when passed valid parameters.

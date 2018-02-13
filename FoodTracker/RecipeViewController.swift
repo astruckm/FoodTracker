@@ -16,7 +16,7 @@ class RecipeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var recipeText: UITextView!
     
-    var delegate: ModalViewControllerDelegate?
+    var recipeDelegate: ModalViewControllerDelegate?
     var recipe: String?
     
     override func viewDidLoad() {
@@ -35,19 +35,14 @@ class RecipeViewController: UIViewController, UITextViewDelegate {
     private func textViewShouldEndEditing(_ textView: UITextView) {
         recipeText.resignFirstResponder()
     }
-    
 
     // MARK: - Navigation
      @IBAction func done(_ sender: UIButton) {
         recipeText.resignFirstResponder()
-        self.delegate?.sendValue(recipeText.text)
+        self.recipeDelegate?.sendValue(recipeText.text)
         dismiss(animated: true, completion: nil)
      }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
 
 
 }
