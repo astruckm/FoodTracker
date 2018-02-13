@@ -2,8 +2,6 @@ import UIKit
 import os.log
 
 class Meal: NSObject, NSCoding {
-    //test
-    
     //MARK: Properties
     var name: String
     var photo: UIImage?
