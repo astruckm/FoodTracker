@@ -2,8 +2,7 @@
 //  MealViewController.swift
 //  FoodTracker
 //
-//  Created by ASM on 7/28/17.
-//  Copyright © 2017 ASM. All rights reserved.
+//  Created by ASM on 2/19/18.
 //
 
 import UIKit
@@ -157,7 +156,6 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         nameTextField.resignFirstResponder()
         recipeTextView.resignFirstResponder()
         
-        //UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
         //Only allow photos to be picked, not taken.
@@ -174,7 +172,6 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         recipeTextView.resignFirstResponder()
 
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            //UIImagePickerController is a view controller that lets a user take a photo.
             let imagePickerController = UIImagePickerController()
             
             //Enable photos to be taken.
@@ -194,8 +191,6 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         let text = nameTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
     }
-    
-    
     
 }
 

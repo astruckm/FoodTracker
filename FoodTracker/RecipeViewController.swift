@@ -2,11 +2,11 @@
 //  RecipeViewController.swift
 //  FoodTracker
 //
-//  Created by ASM on 1/13/18.
-//  Copyright © 2018 ASM. All rights reserved.
+//  Created by ASM on 2/19/18.
 //
 
 import UIKit
+
 
 protocol ModalViewControllerDelegate {
     func sendValue(_ value: String)
@@ -16,8 +16,8 @@ class RecipeViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var recipeText: UITextView!
     
-    var recipeDelegate: ModalViewControllerDelegate?
-    var recipe: String?
+    var recipeDelegate: ModalViewControllerDelegate? //Used to send value of recipe text to MealViewController
+    var recipe: String? //Store recipe text received from MealViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,11 @@ class RecipeViewController: UIViewController, UITextViewDelegate {
 
     
     //MARK: UITextViewDelegate
-    //Probably not necessary
     private func textViewShouldEndEditing(_ textView: UITextView) {
         recipeText.resignFirstResponder()
     }
 
-    // MARK: - Navigation
+    // MARK: Navigation
      @IBAction func done(_ sender: UIButton) {
         recipeText.resignFirstResponder()
         self.recipeDelegate?.sendValue(recipeText.text)

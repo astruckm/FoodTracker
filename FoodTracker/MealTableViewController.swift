@@ -2,8 +2,8 @@
 //  MealTableViewController.swift
 //  FoodTracker
 //
-//  Created by ASM on 8/8/17.
-//  Copyright © 2017 ASM. All rights reserved.
+//
+//  Created by ASM on 2/19/18.
 //
 
 import UIKit
@@ -83,15 +83,6 @@ class MealTableViewController: UITableViewController {
         
         tableView.reloadData()
     }
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     //MARK: Navigation
     //In a storyboard-based application, you will often want to do a little preparation before navigation

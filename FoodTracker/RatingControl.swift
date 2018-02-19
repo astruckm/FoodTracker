@@ -1,4 +1,10 @@
-
+//
+//  RatingControl.swift
+//  FoodTracker
+//
+//
+//  Created by ASM on 2/19/18.
+//
 
 import UIKit
 

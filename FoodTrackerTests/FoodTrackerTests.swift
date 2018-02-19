@@ -2,8 +2,7 @@
 //  FoodTrackerTests.swift
 //  FoodTrackerTests
 //
-//  Created by ASM on 7/28/17.
-//  Copyright © 2017 ASM. All rights reserved.
+//  Created by ASM on 2/19/18.
 //
 
 import XCTest
