@@ -13,7 +13,9 @@ class MealTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let starSizeDimension = self.contentView.bounds.width / 12.0
+        ratingControl.starSize.width = starSizeDimension
+        ratingControl.starSize.height = starSizeDimension
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

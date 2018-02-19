@@ -17,6 +17,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var recipeTextView: UITextView!
+    @IBOutlet weak var ratingCameraStack: UIStackView!
     
     //This value is either passed by MealTableViewController in prepare(for:sender:) or constructed as part of adding a new meal.
     var meal: Meal?
@@ -52,6 +53,17 @@ class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         // Enable the save button only if the text field has a valid Meal name.
         updateSaveButtonState()
+        
+        //Add a light border around the image if it's blank
+        if photoImageView.image == nil {
+            photoImageView.layer.borderWidth = 1
+            photoImageView.alpha = 0.2
+        }
+        
+        //Space camera icon out on larger phones
+        if UIScreen.main.fixedCoordinateSpace.bounds.width > 350 {
+            ratingCameraStack.spacing = self.view.bounds.width / 10
+        }
     }
     
     //MARK: UITextFieldDelegate
